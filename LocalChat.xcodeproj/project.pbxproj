@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		273ADA3F1A2D6B97009BC59F /* CustomTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273ADA3E1A2D6B97009BC59F /* CustomTableViewController.m */; };
+		273ADA421A2D7A78009BC59F /* MPCManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 273ADA411A2D7A78009BC59F /* MPCManager.m */; };
 		27AD54241A1EE4E00089601D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD54231A1EE4E00089601D /* main.m */; };
 		27AD54271A1EE4E00089601D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD54261A1EE4E00089601D /* AppDelegate.m */; };
 		27AD542A1A1EE4E00089601D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD54291A1EE4E00089601D /* ViewController.m */; };
@@ -28,6 +30,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		273ADA3D1A2D6B97009BC59F /* CustomTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewController.h; sourceTree = "<group>"; };
+		273ADA3E1A2D6B97009BC59F /* CustomTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewController.m; sourceTree = "<group>"; };
+		273ADA401A2D7A78009BC59F /* MPCManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCManager.h; sourceTree = "<group>"; };
+		273ADA411A2D7A78009BC59F /* MPCManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCManager.m; sourceTree = "<group>"; };
 		27AD541E1A1EE4E00089601D /* LocalChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27AD54221A1EE4E00089601D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27AD54231A1EE4E00089601D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -94,6 +100,10 @@
 				27AD54211A1EE4E00089601D /* Supporting Files */,
 				27AFBA271A24430400A7FF5D /* ConnectViewController.h */,
 				27AFBA281A24430400A7FF5D /* ConnectViewController.m */,
+				273ADA3D1A2D6B97009BC59F /* CustomTableViewController.h */,
+				273ADA3E1A2D6B97009BC59F /* CustomTableViewController.m */,
+				273ADA401A2D7A78009BC59F /* MPCManager.h */,
+				273ADA411A2D7A78009BC59F /* MPCManager.m */,
 			);
 			path = LocalChat;
 			sourceTree = "<group>";
@@ -225,8 +235,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				27AD542A1A1EE4E00089601D /* ViewController.m in Sources */,
+				273ADA3F1A2D6B97009BC59F /* CustomTableViewController.m in Sources */,
 				27AD54271A1EE4E00089601D /* AppDelegate.m in Sources */,
 				27AD54241A1EE4E00089601D /* main.m in Sources */,
+				273ADA421A2D7A78009BC59F /* MPCManager.m in Sources */,
 				27AFBA291A24430400A7FF5D /* ConnectViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

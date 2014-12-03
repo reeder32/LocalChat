@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
 @property (weak, nonatomic) IBOutlet UITextView *myChatViewArea;
 @property (weak, nonatomic) IBOutlet UITextField *textInput;
+//The outlet of the bottom spacing constraint
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *keyboardHeight;
 
 @end
 
