@@ -7,6 +7,7 @@
 //
 
 #import "CustomTableViewController.h"
+#import "MyCustomCellTableViewCell.h"
 
 
 @interface CustomTableViewController ()
@@ -33,22 +34,35 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return 5;
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyPrototypeCell" forIndexPath:indexPath];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+
+{
+    
+    static NSString *CellIdentifier = @"MyPrototypeCell";
+    
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
+                             CellIdentifier];
+    
+    if (cell == nil){
+        cell = [[UITableViewCell alloc]
+                initWithStyle:UITableViewCellStyleSubtitle
+                reuseIdentifier:CellIdentifier];
+    }
     
     // Configure the cell...
+    
+   
     
     return cell;
 }
