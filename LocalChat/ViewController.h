@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h> 
+#import "AppDelegate.h"
+
 
 @interface ViewController : UIViewController <UITextFieldDelegate>
 
@@ -16,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *textInput;
 //The outlet of the bottom spacing constraint
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *keyboardHeight;
+
+@property AppDelegate *myAppDelegate;
 
 @end
 

@@ -7,7 +7,7 @@
 //
 
 #import "ConnectViewController.h"
-#import "MyCustomCellTableViewCell.h"
+
 
 @interface ConnectViewController ()
 
@@ -18,11 +18,44 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    myAppDelegate = [[UIApplication sharedApplication] delegate];
+    
+    self.connectedPeers = myAppDelegate.mpcManager.connectedPeers;
 }
 
-#pragma -mark
-#pragma TableView datasource methods
+-(void)addNotifications{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+        selector:@selector(MPCDidChangeState: )
+        name:@"MPCDidChangeStateNotification" object:nil];
+}
 
+-(void)MPCDidChangeState: (NSNotification *)notification{
+    self.connectedPeers = myAppDelegate.mpcManager.connectedPeers;
+    [self.connectionsTableView reloadData];
+}
+
+- (IBAction)browse:(id)sender {
+    
+    [myAppDelegate.mpcManager setupMCBBrowser];
+    myAppDelegate.mpcManager.browser.delegate = self;
+    [self presentViewController:myAppDelegate.mpcManager.browser animated:YES completion:^{
+        
+    }];
+}
+
+
+-(void)browserViewControllerDidFinish:(MCBrowserViewController *)browserViewController{
+    [myAppDelegate.mpcManager.browser dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+    
+}
+
+-(void)browserViewControllerWasCancelled:(MCBrowserViewController *)browserViewController{
+    [myAppDelegate.mpcManager.browser dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     //returns the number of sections you need.
     return 1;
@@ -30,31 +63,31 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     //how many rows are in each of the above sections (Total number of cells needing to be displayed).
-    return 10;
+    return self.connectedPeers.count;
 }
 
-
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    //This sets the size of the cell at any given index.
+    return 66;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     //The actual code to return each cell, configured with the data you want to display.
     
-    static NSString *CellIdentifier = @"myPrototypeCell";
+    static NSString *CellIdentifier = @"Cell";
     
-    MyCustomCellTableViewCell *cell = [tableView
+    UITableViewCell *cell = [tableView
                              dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[MyCustomCellTableViewCell alloc]
+        cell = [[UITableViewCell alloc]
                 initWithStyle:UITableViewCellStyleSubtitle
                 reuseIdentifier:CellIdentifier];
     }
     
     // Configure the cell.
+    cell.textLabel.text = [self.connectedPeers objectAtIndex:indexPath.row];
     
-    
-    cell.cellLabel.text = @"Hello, World!";
-    cell.cellImage.image = [UIImage imageNamed:(@"chat_icon")];
     return cell;
-    
     
 }
 
@@ -69,22 +102,20 @@
     
 }
 
-
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 /*
-#pragma mark - Navigation
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

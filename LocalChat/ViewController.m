@@ -8,8 +8,8 @@
 
 #import "ViewController.h"
 
-
 @interface ViewController ()
+
 
 
 
@@ -43,10 +43,6 @@
     
 }
 
-
--(void)viewDidAppear:(BOOL)animated{
-    [self.view bringSubviewToFront:self.myTextView];
-}
 
 -(void)hideKeyboard {
     [self.textInput resignFirstResponder];

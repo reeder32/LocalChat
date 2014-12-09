@@ -16,8 +16,8 @@
 		27AD54321A1EE4E00089601D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27AD54301A1EE4E00089601D /* LaunchScreen.xib */; };
 		27AD543E1A1EE4E00089601D /* LocalChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD543D1A1EE4E00089601D /* LocalChatTests.m */; };
 		27AFBA291A24430400A7FF5D /* ConnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AFBA281A24430400A7FF5D /* ConnectViewController.m */; };
-		27FE3D751A2F937D00C920C1 /* MyCustomCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FE3D741A2F937D00C920C1 /* MyCustomCellTableViewCell.m */; };
 		27FE3D771A310E0B00C920C1 /* chat_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 27FE3D761A310E0B00C920C1 /* chat_icon.png */; };
+		27FE3D851A31663D00C920C1 /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27FE3D841A31663D00C920C1 /* MultipeerConnectivity.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,9 +48,8 @@
 		27AD543D1A1EE4E00089601D /* LocalChatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocalChatTests.m; sourceTree = "<group>"; };
 		27AFBA271A24430400A7FF5D /* ConnectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectViewController.h; sourceTree = "<group>"; };
 		27AFBA281A24430400A7FF5D /* ConnectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectViewController.m; sourceTree = "<group>"; };
-		27FE3D731A2F937D00C920C1 /* MyCustomCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCustomCellTableViewCell.h; sourceTree = "<group>"; };
-		27FE3D741A2F937D00C920C1 /* MyCustomCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCustomCellTableViewCell.m; sourceTree = "<group>"; };
 		27FE3D761A310E0B00C920C1 /* chat_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_icon.png; sourceTree = "<group>"; };
+		27FE3D841A31663D00C920C1 /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27FE3D851A31663D00C920C1 /* MultipeerConnectivity.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +74,7 @@
 		27AD54151A1EE4E00089601D = {
 			isa = PBXGroup;
 			children = (
+				27FE3D841A31663D00C920C1 /* MultipeerConnectivity.framework */,
 				27AD54201A1EE4E00089601D /* LocalChat */,
 				27AD543A1A1EE4E00089601D /* LocalChatTests */,
 				27AD541F1A1EE4E00089601D /* Products */,
@@ -104,8 +105,6 @@
 				27AFBA281A24430400A7FF5D /* ConnectViewController.m */,
 				273ADA401A2D7A78009BC59F /* MPCManager.h */,
 				273ADA411A2D7A78009BC59F /* MPCManager.m */,
-				27FE3D731A2F937D00C920C1 /* MyCustomCellTableViewCell.h */,
-				27FE3D741A2F937D00C920C1 /* MyCustomCellTableViewCell.m */,
 				27FE3D781A310E1500C920C1 /* images */,
 			);
 			path = LocalChat;
@@ -247,7 +246,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				27AD542A1A1EE4E00089601D /* ViewController.m in Sources */,
-				27FE3D751A2F937D00C920C1 /* MyCustomCellTableViewCell.m in Sources */,
 				27AD54271A1EE4E00089601D /* AppDelegate.m in Sources */,
 				27AD54241A1EE4E00089601D /* main.m in Sources */,
 				273ADA421A2D7A78009BC59F /* MPCManager.m in Sources */,
