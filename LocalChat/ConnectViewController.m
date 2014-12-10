@@ -21,26 +21,33 @@
     myAppDelegate = [[UIApplication sharedApplication] delegate];
     
     self.connectedPeers = myAppDelegate.mpcManager.connectedPeers;
+    
+    [self addNotifications];
 }
 
 -(void)addNotifications{
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
         selector:@selector(MPCDidChangeState: )
         name:@"MPCDidChangeStateNotification" object:nil];
 }
 
 -(void)MPCDidChangeState: (NSNotification *)notification{
+    
     self.connectedPeers = myAppDelegate.mpcManager.connectedPeers;
     [self.connectionsTableView reloadData];
+    
 }
 
 - (IBAction)browse:(id)sender {
     
     [myAppDelegate.mpcManager setupMCBBrowser];
+    myAppDelegate.mpcManager.browser.maximumNumberOfPeers = 6;
     myAppDelegate.mpcManager.browser.delegate = self;
     [self presentViewController:myAppDelegate.mpcManager.browser animated:YES completion:^{
         
     }];
+    
 }
 
 
@@ -56,6 +63,7 @@
         
     }];
 }
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     //returns the number of sections you need.
     return 1;

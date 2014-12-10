@@ -77,7 +77,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="LocalChat" id="tmF-rT-8VR">
-                        <barButtonItem key="rightBarButtonItem" title="Connect" style="plain" id="TiY-xn-G1z">
+                        <barButtonItem key="rightBarButtonItem" title="Connect" id="TiY-xn-G1z">
                             <connections>
                                 <segue destination="NRL-mc-LXB" kind="show" id="IBX-Vf-pmH"/>
                             </connections>
