@@ -17,16 +17,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <userGuides>
-                            <userLayoutGuide location="158" affinity="minX"/>
+                            <userLayoutGuide location="159" affinity="minX"/>
                         </userGuides>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pUU-Yc-Gsa" userLabel="myChatViewArea">
-                                <rect key="frame" x="0.0" y="64" width="320" height="465"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pUU-Yc-Gsa" userLabel="myChatViewArea">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="533"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="465" id="aL5-ai-oep"/>
+                                    <constraint firstAttribute="height" constant="533" id="aL5-ai-oep"/>
                                 </constraints>
-                                <attributedString key="attributedText"/>
+                                <color key="textColor" red="0.3752424929" green="0.52196371330000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rGZ-bw-eqZ" userLabel="myTextView">
@@ -41,11 +42,14 @@
                                         <state key="normal" title="Send">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="send:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="9af-uK-GBx"/>
+                                        </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" borderStyle="roundedRect" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3DW-LW-yhM">
                                         <rect key="frame" x="8" y="18" width="247" height="30"/>
                                         <rect key="contentStretch" x="0.89999999999999991" y="0.0" width="1" height="1"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
@@ -69,7 +73,7 @@
                         <constraints>
                             <constraint firstItem="rGZ-bw-eqZ" firstAttribute="leading" secondItem="pUU-Yc-Gsa" secondAttribute="leading" id="9sr-Y6-zLV"/>
                             <constraint firstItem="rGZ-bw-eqZ" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="SoE-MT-4pt"/>
-                            <constraint firstItem="pUU-Yc-Gsa" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="UcQ-UN-biJ"/>
+                            <constraint firstItem="pUU-Yc-Gsa" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-64" id="UcQ-UN-biJ"/>
                             <constraint firstItem="pUU-Yc-Gsa" firstAttribute="trailing" secondItem="rGZ-bw-eqZ" secondAttribute="trailing" id="jjZ-hU-vwU"/>
                             <constraint firstItem="rGZ-bw-eqZ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="o8r-u0-SCf"/>
                             <constraint firstAttribute="trailing" secondItem="pUU-Yc-Gsa" secondAttribute="trailing" id="wzd-S0-fKO"/>

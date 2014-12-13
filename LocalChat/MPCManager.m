@@ -56,6 +56,12 @@
 
 -(void)session:(MCSession *)session didReceiveData:(NSData *)data fromPeer:(MCPeerID *)peerID{
     
+    NSDictionary *dict = @{@"data": data,
+                           @"peerId": peerID
+                           };
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"MPCDidReceiveData" object:nil userInfo:dict];
+                           
 }
 
 -(void)session:(MCSession *)session didReceiveStream:(NSInputStream *)stream withName:(NSString *)streamName fromPeer:(MCPeerID *)peerID{

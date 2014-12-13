@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "AppDelegate.h"
 
 @interface ViewController ()
 
@@ -43,6 +44,41 @@
     
 }
 
+- (IBAction)send:(id)sender {
+    
+    [self sendMyMessage];
+}
+
+-(void)sendMyMessage {
+    
+    if(self.textInput.text.length > 0){
+    
+        AppDelegate *myAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        NSData *dataToSend = [self.textInput.text dataUsingEncoding:NSUTF8StringEncoding];
+        
+        NSError *error;
+        
+        NSArray *allPeers = myAppDelegate.mpcManager.connectedPeers;
+        
+        [myAppDelegate.mpcManager.session sendData:dataToSend toPeers:allPeers withMode:MCSessionSendDataReliable error:&error];
+        
+        NSString *formattedTextWithDisplayName = [NSString stringWithFormat:@"Me: %@\n", self.textInput.text];
+        
+        [self updateChatViewWithString:formattedTextWithDisplayName];
+        
+        self.textInput.text = @" ";
+        
+     }
+    
+    [self hideKeyboard];
+    
+}
+
+-(void)updateChatViewWithString:(NSString *)textForView {
+    
+    self.myChatViewArea.text = [self.myChatViewArea.text stringByAppendingString:textForView];
+}
 
 -(void)hideKeyboard {
     [self.textInput resignFirstResponder];
@@ -96,7 +132,8 @@
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     
-    [self hideKeyboard];
+   
+    [self sendMyMessage];
     
     return NO;
 }
