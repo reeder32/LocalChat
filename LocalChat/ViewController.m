@@ -11,9 +11,6 @@
 
 @interface ViewController ()
 
-
-
-
 @end
 
 @implementation ViewController
@@ -22,70 +19,113 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    [self addNotifications];
     
-
-    // Notify this ViewController when the keyboard is shown
-
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                            selector: @selector(keyboardWasShown:)
-                            name:UIKeyboardWillChangeFrameNotification
-                            object:nil];
-
-    
-    
+    //Adding a tap gesture recognizer so if someone taps the screen, it will hide the keyboard
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     
+    //Set the number of taps required to initiate the action.
     tap.numberOfTapsRequired = 1;
     
+    //Add this gesture recognizer to our views list of recognizers.
     [self.view addGestureRecognizer:tap];
+}
+
+-(void)addNotifications {
+    //Notify this ViewController when the keyboard is was shown.
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardWillChangeFrameNotification
+                                               object:nil];
     
-    self.textInput.delegate = self;
-   
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveData:) name:@"MPCDidReceiveData" object:nil];
+    
+    
+}
+
+-(void) didReceiveData:(NSNotification *)notification {
+    MCPeerID *peerID = [[notification userInfo] objectForKey:@"peerID"];
+    
+    NSString *peerDisplayName = peerID.displayName;
+    
+    NSData *dataReceived = [[notification userInfo] objectForKey:@"data"];
+    
+    NSString *textFromData = [[NSString alloc] initWithData:dataReceived encoding:NSUTF8StringEncoding];
+    
+    NSString *formatedTextWithDisplayName = [NSString stringWithFormat:@"%@:\n %@\n\n",peerDisplayName,textFromData];
+    
+    [self performSelectorOnMainThread:@selector(updateChatViewWithString:) withObject:formatedTextWithDisplayName waitUntilDone:NO];
+    
+    
+    //[self updateChatViewWithString:formatedTextWithDisplayName];
+    
     
 }
 
 - (IBAction)send:(id)sender {
     
     [self sendMyMessage];
+    
 }
 
 -(void)sendMyMessage {
     
-    if(self.textInput.text.length > 0){
-    
+    //We dont want to send a blank message, check to make sure there is at least one character in the text box.
+    if (self.textInput.text.length > 0) {
+        
+        //make a reference to our existing AppDelegate
         AppDelegate *myAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         
+        //Convert the text in our input to NSData since this is the format we need in the sendData method below.
         NSData *dataToSend = [self.textInput.text dataUsingEncoding:NSUTF8StringEncoding];
         
+        //We also need to create an NSError reference in case the method below returns an error. Returning this error is a function of this particular method.
         NSError *error;
         
-        NSArray *allPeers = myAppDelegate.mpcManager.connectedPeers;
+        //We need an NSArray type class, the method will crash if given the mutable array that exists in the MPCManager.
+        NSArray *allPeers = myAppDelegate.mpcManager.session.connectedPeers;
         
+        //In our mpcManager session object, run this method to send the data.
         [myAppDelegate.mpcManager.session sendData:dataToSend toPeers:allPeers withMode:MCSessionSendDataReliable error:&error];
         
-        NSString *formattedTextWithDisplayName = [NSString stringWithFormat:@"Me: %@\n", self.textInput.text];
+        if (error) {
+            NSLog(@"error = %@", error);
+        }
+        //Format the display of our text chat view  so it is clear that this message is from you and also displays the text you wrote.
+        NSString *formatedTextWithDisplayName = [NSString stringWithFormat:@"Me:\n %@\n\n",self.textInput.text];
         
-        [self updateChatViewWithString:formattedTextWithDisplayName];
+        //Using our custom method, pass the formatted string to display
+        [self updateChatViewWithString:formatedTextWithDisplayName];
         
-        self.textInput.text = @" ";
+        //Clear out our text input view (where we type our message into) since the message has been sent.
+        self.textInput.text = @"";
         
-     }
+    }
     
+    //Hide the keyboard
     [self hideKeyboard];
     
 }
 
 -(void)updateChatViewWithString:(NSString *)textForView {
-    
+    //Use this method to update our chatView window by taking the existing chat text view text and appending the new text that came in as an argument - textForView.
     self.myChatViewArea.text = [self.myChatViewArea.text stringByAppendingString:textForView];
+    
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    
+    //Hide the keyboard if we navigate away from this view.
+    [self hideKeyboard];
 }
 
 -(void)hideKeyboard {
     [self.textInput resignFirstResponder];
 }
 
--(void)keyboardWasShown:(NSNotification *)notification
+- (void)keyboardWasShown:(NSNotification *)notification
 {
+    
     //Get keyboard frame before it is shown (its there at this point, just hidden below the bootom of our screen.
     CGRect keyboardStartFrame = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
     
@@ -123,18 +163,21 @@
     
 }
 
-
-
-
 #pragma mark -
 #pragma mark UITextfield delegate methods
 
+//This delegate method gets called when the user presses return.
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    
-   
+    //Send our message if the user hits return
     [self sendMyMessage];
     
+    //We can remove this [self hideKeyboard] call in this method since our [self sendMyMessage] also calls [self hidekeyboard]
+    
+    //Dismiss the keyboard by calling this method.
+    //[self hideKeyboard];
+    
+    //Needs a return value to know if a return should be inserted in the textfield.
     return NO;
 }
 
@@ -142,9 +185,6 @@
 {
     [self hideKeyboard];
 }
-
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
