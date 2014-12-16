@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		273ADA421A2D7A78009BC59F /* MPCManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 273ADA411A2D7A78009BC59F /* MPCManager.m */; };
+		27487F2B1A40137800422636 /* placeholder copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 27487F2A1A40137800422636 /* placeholder copy.png */; };
 		27AD54241A1EE4E00089601D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD54231A1EE4E00089601D /* main.m */; };
 		27AD54271A1EE4E00089601D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD54261A1EE4E00089601D /* AppDelegate.m */; };
 		27AD542A1A1EE4E00089601D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD54291A1EE4E00089601D /* ViewController.m */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		273ADA401A2D7A78009BC59F /* MPCManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCManager.h; sourceTree = "<group>"; };
 		273ADA411A2D7A78009BC59F /* MPCManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCManager.m; sourceTree = "<group>"; };
+		27487F2A1A40137800422636 /* placeholder copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder copy.png"; sourceTree = "<group>"; };
 		27AD541E1A1EE4E00089601D /* LocalChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27AD54221A1EE4E00089601D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27AD54231A1EE4E00089601D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				27AD54291A1EE4E00089601D /* ViewController.m */,
 				27AD542B1A1EE4E00089601D /* Main.storyboard */,
 				27AD542E1A1EE4E00089601D /* Images.xcassets */,
+				27487F2A1A40137800422636 /* placeholder copy.png */,
 				27AD54301A1EE4E00089601D /* LaunchScreen.xib */,
 				27AD54211A1EE4E00089601D /* Supporting Files */,
 				27AFBA271A24430400A7FF5D /* ConnectViewController.h */,
@@ -227,6 +230,7 @@
 				27FE3D771A310E0B00C920C1 /* chat_icon.png in Resources */,
 				27AD542D1A1EE4E00089601D /* Main.storyboard in Resources */,
 				27AD54321A1EE4E00089601D /* LaunchScreen.xib in Resources */,
+				27487F2B1A40137800422636 /* placeholder copy.png in Resources */,
 				27AD542F1A1EE4E00089601D /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,6 +375,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = LocalChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -381,6 +386,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = LocalChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

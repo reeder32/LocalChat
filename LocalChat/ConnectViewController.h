@@ -10,7 +10,7 @@
 #import <MultipeerConnectivity/MultipeerConnectivity.h> 
 #import "AppDelegate.h"
 
-@interface ConnectViewController : UIViewController <MCBrowserViewControllerDelegate>
+@interface ConnectViewController : UIViewController <MCBrowserViewControllerDelegate, UITextFieldDelegate>
 
 {
     AppDelegate *myAppDelegate;
@@ -18,6 +18,7 @@
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *connectionsTableView;
+@property (weak, nonatomic) IBOutlet UITextField *textName;
 
 @property (nonatomic, strong) NSArray *connectedPeers;
 

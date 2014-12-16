@@ -38,6 +38,12 @@
     [self.connectionsTableView reloadData];
     
 }
+- (IBAction)advertise:(id)sender {
+    
+    UISwitch *myswitch = (UISwitch *)sender;
+    [myAppDelegate.mpcManager advertiseSelf:myswitch.isOn];
+    
+}
 
 - (IBAction)browse:(id)sender {
     
@@ -96,6 +102,15 @@
     cell.textLabel.text = [self.connectedPeers objectAtIndex:indexPath.row];
     
     return cell;
+    
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [myAppDelegate.mpcManager setupPeeraAndSessionWithDisplayName:textField.text];
+    
+    [textField resignFirstResponder];
+    
+    return YES;
     
 }
 

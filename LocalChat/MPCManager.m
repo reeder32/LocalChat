@@ -21,7 +21,7 @@
         
         self.connectedPeers = [NSMutableArray array];
         
-        [self setupPeeraAndSessionWithDisplayName:@"Nick Reeder"];
+        [self setupPeeraAndSessionWithDisplayName:@"Unknown"];
         [self advertiseSelf:TRUE];
         
     }
